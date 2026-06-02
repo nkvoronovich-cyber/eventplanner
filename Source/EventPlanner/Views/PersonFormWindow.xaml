@@ -1,0 +1,72 @@
+<Window x:Class="EventPlanner.Views.PersonFormWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Person Form" Height="540" Width="480"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Background="{StaticResource PageBackground}">
+    <Grid Margin="22">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Person details" FontSize="20" FontWeight="Bold"
+                   Foreground="{StaticResource HeaderText}" Margin="0,0,0,18"/>
+
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Full name" Style="{StaticResource CardLabel}"/>
+            <TextBox x:Name="NameBox" Height="32" Padding="6,4" Margin="0,4,0,12"/>
+
+            <Grid Margin="0,0,0,12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="12"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Phone" Style="{StaticResource CardLabel}"/>
+                    <TextBox x:Name="PhoneBox" Height="32" Padding="6,4" Margin="0,4,0,0"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <TextBlock Text="Email" Style="{StaticResource CardLabel}"/>
+                    <TextBox x:Name="EmailBox" Height="32" Padding="6,4" Margin="0,4,0,0"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Margin="0,0,0,12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="12"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Role" Style="{StaticResource CardLabel}"/>
+                    <ComboBox x:Name="RoleBox" Height="32" Margin="0,4,0,0" SelectionChanged="RoleBox_SelectionChanged"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2" VerticalAlignment="Bottom">
+                    <CheckBox x:Name="ActiveCheck" Content="Active" IsChecked="True" Margin="0,0,0,6"/>
+                </StackPanel>
+            </Grid>
+
+            <StackPanel x:Name="AttendeeFields">
+                <TextBlock Text="Notes" Style="{StaticResource CardLabel}"/>
+                <TextBox x:Name="NotesBox" Height="60" Padding="6,4" Margin="0,4,0,0"
+                         TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+            </StackPanel>
+
+            <StackPanel x:Name="SpeakerFields" Visibility="Collapsed">
+                <TextBlock Text="Topic" Style="{StaticResource CardLabel}"/>
+                <TextBox x:Name="TopicBox" Height="32" Padding="6,4" Margin="0,4,0,12"/>
+                <TextBlock Text="Bio" Style="{StaticResource CardLabel}"/>
+                <TextBox x:Name="BioBox" Height="60" Padding="6,4" Margin="0,4,0,0"
+                         TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,18,0,0">
+            <Button Content="Save" Style="{StaticResource PrimaryButton}" Click="Save_Click" Width="100"/>
+            <Button Content="Cancel" Style="{StaticResource SecondaryButton}" Click="Cancel_Click" Width="100" Margin="0"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,65 @@
+<Window x:Class="EventPlanner.Views.RegistrationFormWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Registration Form" Height="580" Width="520"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Background="{StaticResource PageBackground}">
+    <Grid Margin="22">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Registration details" FontSize="20" FontWeight="Bold"
+                   Foreground="{StaticResource HeaderText}" Margin="0,0,0,18"/>
+
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Event" Style="{StaticResource CardLabel}"/>
+            <ComboBox x:Name="EventBox" Height="32" Margin="0,4,0,12" DisplayMemberPath="Title"/>
+
+            <TextBlock Text="Person" Style="{StaticResource CardLabel}"/>
+            <ComboBox x:Name="PersonBox" Height="32" Margin="0,4,0,12" DisplayMemberPath="FullName"/>
+
+            <Grid Margin="0,0,0,12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="12"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Ticket type" Style="{StaticResource CardLabel}"/>
+                    <TextBox x:Name="TicketBox" Height="32" Padding="6,4" Margin="0,4,0,0" Text="Standard"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2" VerticalAlignment="Bottom">
+                    <CheckBox x:Name="FreeCheck" Content="Free entry" Margin="0,0,0,6" Checked="FreeCheck_Toggled" Unchecked="FreeCheck_Toggled"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Margin="0,0,0,12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="12"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Price (€)" Style="{StaticResource CardLabel}"/>
+                    <TextBox x:Name="PriceBox" Height="32" Padding="6,4" Margin="0,4,0,0" Text="0.00"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <TextBlock Text="Paid amount (€)" Style="{StaticResource CardLabel}"/>
+                    <TextBox x:Name="PaidBox" Height="32" Padding="6,4" Margin="0,4,0,0" Text="0.00"/>
+                </StackPanel>
+            </Grid>
+
+            <TextBlock Text="Notes" Style="{StaticResource CardLabel}"/>
+            <TextBox x:Name="NotesBox" Height="70" Padding="6,4" Margin="0,4,0,0"
+                     TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,18,0,0">
+            <Button Content="Save" Style="{StaticResource PrimaryButton}" Click="Save_Click" Width="120"/>
+            <Button Content="Cancel" Style="{StaticResource SecondaryButton}" Click="Cancel_Click" Width="100" Margin="0"/>
+        </StackPanel>
+    </Grid>
+</Window>

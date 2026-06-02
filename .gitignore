@@ -1,0 +1,32 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+/Build/
+
+# Local database (created on first run)
+*.db
+
+# Temp / unpack working folders
+_ex/
+_unpacked*/
+_stage/
+
+# Report-generation scaffolding and packaged archive (regenerable)
+/report_build/
+*.zip
+
+# Python tooling cache
+__pycache__/
+*.pyc
+
+# IDE
+.vs/
+*.user
+*.suo
+
+# Claude Code harness settings (local, not part of the project)
+.claude/
+
+Build/EventPlanner.exe
+Build/EventPlanner.pdb
+Build/eventplanner.db

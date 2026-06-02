@@ -1,0 +1,56 @@
+<UserControl x:Class="EventPlanner.Views.CheckInPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Loaded="CheckInPage_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Check-in" Style="{StaticResource PageTitle}"/>
+
+        <Grid Grid.Row="1" Margin="0,0,0,12">
+            <TextBox x:Name="FilterBox" Height="36" Padding="10,6" TextChanged="FilterBox_TextChanged"
+                     ToolTip="Type to narrow the list below"/>
+            <TextBlock Text="Type to filter participants by name or phone" Foreground="{StaticResource MutedText}"
+                       IsHitTestVisible="False" VerticalAlignment="Center" Margin="12,0,0,0">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=FilterBox}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+        </Grid>
+
+        <ComboBox x:Name="ParticipantBox" Grid.Row="2" Height="40" Margin="0,0,0,14"
+                  DisplayMemberPath="DisplayLabel" SelectionChanged="ParticipantBox_SelectionChanged"/>
+
+        <Border Grid.Row="3" Style="{StaticResource Card}">
+            <StackPanel>
+                <TextBlock x:Name="StatusText" Text="Pick a participant from the list above to see their details."
+                           Foreground="{StaticResource MutedText}" FontSize="14"/>
+                <StackPanel x:Name="DetailsPanel" Visibility="Collapsed" Margin="0,12,0,0">
+                    <TextBlock x:Name="NameText" FontSize="22" FontWeight="Bold" Foreground="{StaticResource HeaderText}"/>
+                    <TextBlock x:Name="PhoneText" Foreground="{StaticResource MutedText}" Margin="0,6,0,0"/>
+                    <TextBlock x:Name="EventText" Foreground="{StaticResource MutedText}" Margin="0,4,0,0"/>
+                    <TextBlock x:Name="PaymentText" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                    <TextBlock x:Name="CheckedText" Foreground="{StaticResource SuccessText}" FontWeight="SemiBold" Margin="0,8,0,0"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,14,0,0">
+            <Button Content="Mark as checked-in" Style="{StaticResource PrimaryButton}" Click="CheckIn_Click"/>
+            <Button Content="Clear" Style="{StaticResource SecondaryButton}" Click="Clear_Click"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

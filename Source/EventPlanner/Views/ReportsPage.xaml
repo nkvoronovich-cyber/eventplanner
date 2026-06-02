@@ -1,0 +1,42 @@
+<UserControl x:Class="EventPlanner.Views.ReportsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Reports" Style="{StaticResource PageTitle}"/>
+
+        <Border Grid.Row="1" Style="{StaticResource Card}" Margin="0,0,0,14">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Event for finance summary" Style="{StaticResource CardLabel}"/>
+                    <ComboBox x:Name="EventBox" Height="34" Margin="0,4,12,0" DisplayMemberPath="Title"/>
+                </StackPanel>
+                <Button Grid.Column="1" Content="New Event" Style="{StaticResource PrimaryButton}"
+                        Click="NewEvent_Click" VerticalAlignment="Bottom" Margin="0"/>
+            </Grid>
+        </Border>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,14">
+            <Button Content="Export attendee list" Style="{StaticResource PrimaryButton}" Click="ExportAttendees_Click"/>
+            <Button Content="Export unpaid list" Style="{StaticResource SecondaryButton}" Click="ExportUnpaid_Click"/>
+            <Button Content="Export finance summary" Style="{StaticResource SecondaryButton}" Click="ExportFinance_Click"/>
+        </StackPanel>
+
+        <Border Grid.Row="3" Style="{StaticResource Card}">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <TextBlock x:Name="PreviewText" TextWrapping="Wrap" Foreground="{StaticResource MutedText}"
+                           Text="Choose an action above to generate a CSV report."/>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</UserControl>

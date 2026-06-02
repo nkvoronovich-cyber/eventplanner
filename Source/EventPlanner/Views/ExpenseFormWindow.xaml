@@ -1,0 +1,50 @@
+<Window x:Class="EventPlanner.Views.ExpenseFormWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Expense Form" Height="460" Width="480"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Background="{StaticResource PageBackground}">
+    <Grid Margin="22">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Expense details" FontSize="20" FontWeight="Bold"
+                   Foreground="{StaticResource HeaderText}" Margin="0,0,0,18"/>
+
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Event" Style="{StaticResource CardLabel}"/>
+            <ComboBox x:Name="EventBox" Height="32" Margin="0,4,0,12" DisplayMemberPath="Title"/>
+
+            <TextBlock Text="Category" Style="{StaticResource CardLabel}"/>
+            <TextBox x:Name="CategoryBox" Height="32" Padding="6,4" Margin="0,4,0,12"/>
+
+            <Grid Margin="0,0,0,12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="12"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Amount (€)" Style="{StaticResource CardLabel}"/>
+                    <TextBox x:Name="AmountBox" Height="32" Padding="6,4" Margin="0,4,0,0" Text="0.00"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <TextBlock Text="Paid date" Style="{StaticResource CardLabel}"/>
+                    <DatePicker x:Name="PaidDate" Height="32" Margin="0,4,0,0"/>
+                </StackPanel>
+            </Grid>
+
+            <TextBlock Text="Notes" Style="{StaticResource CardLabel}"/>
+            <TextBox x:Name="NotesBox" Height="70" Padding="6,4" Margin="0,4,0,0"
+                     TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,18,0,0">
+            <Button Content="Save" Style="{StaticResource PrimaryButton}" Click="Save_Click" Width="100"/>
+            <Button Content="Cancel" Style="{StaticResource SecondaryButton}" Click="Cancel_Click" Width="100" Margin="0"/>
+        </StackPanel>
+    </Grid>
+</Window>
